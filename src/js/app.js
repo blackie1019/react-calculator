@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Home from './containers/Home';
-injectTapEventPlugin();
+import Calculator from './containers/Calculator';
+
 const render = Component => {
 	ReactDOM.render(
     <AppContainer>
     <Component/>
   </AppContainer>, document.getElementById('app'));
 };
-render(Home);
+render(Calculator);
 if (module.hot) {
-	module.hot.accept('./containers/Home', () => {
-		render(Home);
+	module.hot.accept('./containers/Calculator', () => {
+		render(Calculator);
 	});
 }

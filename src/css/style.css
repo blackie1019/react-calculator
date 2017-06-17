@@ -1,0 +1,14 @@
+#calculator .col{
+    padding: 0.1rem 0.1rem!important;
+}
+
+#calculator .btn{
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+#calculator .sum-span{
+    margin: 0 0.5rem;
+    font-size: 2rem;
+    float: right;
+}

@@ -4,11 +4,8 @@ const sourcePath = path.resolve(__dirname, '../src');
 const publicPath = path.resolve(__dirname, '../docs');
 
 module.exports = {
-	devtool: 'source-map',
 	entry: {
 		'bundle': [
-			'babel-polyfill',
-			'react-hot-loader/patch',
 			`${sourcePath}/js/app.js`,
 			`${sourcePath}/css/style.css`
 		]
