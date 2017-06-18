@@ -9,7 +9,9 @@ const render = Component => {
     <Component/>
   </AppContainer>, document.getElementById('app'));
 };
+
 render(Calculator);
+
 if (module.hot) {
 	module.hot.accept('./containers/Calculator', () => {
 		render(Calculator);

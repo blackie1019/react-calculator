@@ -12,11 +12,12 @@ const operationType = {
 	add : "+",
 	minus : "-",
 	multi : "*",
-	divide : "÷",
+	divide : "/",
 	sum : "=",
 	point : ".",
 	clean : "clean",
-	back: "←"
+	undo: "←",
+	redo: "→"
 };
 
 const inputButtons = [
@@ -24,10 +25,13 @@ const inputButtons = [
 		layout:"col s3", cssSetting: cssSetting.calculatorSubBtn, value: operationType.clean
 	},	
 	{
-		layout:"col s3", cssSetting: cssSetting.calculatorSubBtn, value: operationType.back
+		layout:"col s3", cssSetting: cssSetting.calculatorSubBtn, value: operationType.undo
 	},
 	{
-		layout:"col s3 offset-s3", cssSetting: cssSetting.calculatorFunctionBtn, value: operationType.divide
+		layout:"col s3", cssSetting: cssSetting.calculatorSubBtn, value: operationType.redo
+	},
+	{
+		layout:"col s3", cssSetting: cssSetting.calculatorFunctionBtn, value: operationType.divide
 	},	
 	{
 		layout:"col s3", cssSetting: cssSetting.calculatorBtn, value:"7"
@@ -85,7 +89,7 @@ const calculatorInitState = {
 	isAllClean:true	
 };
 
-class App extends Component {
+class Calculator extends Component {
 	constructor(props) {
 		super(props);
 		this.state = calculatorInitState;
@@ -169,7 +173,13 @@ class App extends Component {
 										<button className={element.cssSetting} onClick={this.clean} >{this.state.isAllClean?"AC":"C"}</button>
 									</div>
 								);
-							case operationType.back:
+							case operationType.undo:
+								return (
+									<div key={element.value} className={element.layout}>
+										<button className={element.cssSetting} >{element.value}</button>
+									</div>
+								);
+							case operationType.redo:
 								return (
 									<div key={element.value} className={element.layout}>
 										<button className={element.cssSetting} >{element.value}</button>
@@ -190,4 +200,4 @@ class App extends Component {
 	}
 };
 
-export default App;
+export default Calculator;
