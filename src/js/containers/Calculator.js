@@ -4,7 +4,8 @@ import Summary from '../components/Summary';
 const cssSetting ={
 	calculatorBtn : "waves-effect waves-light btn btn-large",
 	calculatorSubBtn : "waves-effect waves-light btn btn-large teal darken-3",
-	calculatorFunctionBtn : "waves-effect waves-light btn btn-large pink darken-1"
+	calculatorFunctionBtn : "waves-effect waves-light btn btn-large pink darken-1",
+	calculatorFocusFunctionBtn : "waves-effect waves-light btn btn-large pink darken-3"
 };
 
 const operationType = {
@@ -147,7 +148,7 @@ class App extends Component {
 			isAllClean : this.state.totalValue !=0 ? true : false
 		});
 	}
-	
+
 	render() {
 		return (
             <div id="calculator" className="row">
@@ -157,7 +158,7 @@ class App extends Component {
 					if(element.cssSetting === cssSetting.calculatorBtn){
 						return (
 							<div key={element.value} className={element.layout}>
-								<a className={element.cssSetting} onClick={this.updateDisplayValue.bind(null,element.value)}>{element.value}</a>
+								<button className={element.cssSetting} onClick={this.updateDisplayValue.bind(null,element.value)}>{element.value}</button>
 							</div>
 						);
 					}else{
@@ -165,19 +166,19 @@ class App extends Component {
 							case operationType.clean:
 								return (
 									<div key={element.value} className={element.layout}>
-										<a className={element.cssSetting} onClick={this.clean} >{this.state.isAllClean?"AC":"C"}</a>
+										<button className={element.cssSetting} onClick={this.clean} >{this.state.isAllClean?"AC":"C"}</button>
 									</div>
 								);
 							case operationType.back:
 								return (
 									<div key={element.value} className={element.layout}>
-										<a className={element.cssSetting} >{element.value}</a>
+										<button className={element.cssSetting} >{element.value}</button>
 									</div>
 								);
 							default:
 								return (
 									<div key={element.value} className={element.layout}>
-										<a className={element.cssSetting} onClick={this.calculating.bind(null,element.value)}>{element.value}</a>
+										<button className={element.value === this.state.operationType?cssSetting.calculatorFocusFunctionBtn:element.cssSetting} onClick={this.calculating.bind(null,element.value)}>{element.value}</button>
 									</div>
 								);
 						}
