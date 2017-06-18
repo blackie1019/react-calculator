@@ -7,10 +7,6 @@
     font-size: 1.5rem;
 }
 
-#calculator .focus-func-btn{
-    border: 0.1rem darkkhaki;
-}
-
 #calculator .sum-span{
     margin: 0 0.5rem;
     font-size: 2rem;
