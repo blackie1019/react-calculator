@@ -2,6 +2,17 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import accounting from '../third-party/accounting.min.js'
 
+function convertDisplay(input){
+	var index = input.indexOf(".");
+	var diff = input.length-index-1;
+	
+	if(index<=0 || (input === "0"||diff===0)){
+		return input;
+	}
+
+	return accounting.formatNumber(input, diff>=1? diff:0);
+}
+
 class Summary extends Component {
 
 	constructor(props) {
@@ -16,7 +27,7 @@ class Summary extends Component {
 	render() {
 		return (
 			<div className="col s12 card-panel grey darken-4">
-				<span className="blue-grey-text text-lighten-5 sum-span">{accounting.formatNumber(this.state.displayValue)}</span>
+				<span className="blue-grey-text text-lighten-5 sum-span">{convertDisplay(this.state.displayValue)}</span>
 			</div>
 		);
 	}

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Summary from '../components/Summary';
+import math from 'mathjs';
 
 const cssSetting ={
 	calculatorBtn : "waves-effect waves-light btn btn-large",
@@ -116,14 +117,14 @@ class Calculator extends Component {
 			if(updateState.previousValue!==null){
 				var formula = updateState.previousValue+updateState.operationType+updateState.inputValue;
 				console.log(formula);
-				var tempResult = eval(formula);
+				var tempResult = math.format(math.eval(formula),{precision: 10});
 				updateState.totalValue = updateState.totalValue===0 ? 
 					tempResult:
-					eval(updateState.totalValue+updateState.operationType+tempResult);
+					math.format(math.eval(updateState.totalValue+updateState.operationType+tempResult),{precision: 10});
 			}else if(updateState.previousValue ===null){
 				var formula = updateState.inputValue+updateState.operationType+updateState.totalValue;
 				console.log(formula);
-				updateState.totalValue =eval(formula); 
+				updateState.totalValue =math.format(math.eval(formula),{precision: 10}); 
 			}
 			updateState.previousValue = null;
 			updateState.displayValue = updateState.totalValue.toString();
@@ -138,11 +139,11 @@ class Calculator extends Component {
 
 	updateDisplayValue(value){
 
-		if(value==="." && this.state.displayValue.includes(".", value.length-1)){
+		if(value===operationType.point && this.state.displayValue.includes(operationType.point, value.length-1)){
 			return;
 		}
 
-		var result = this.state.inputValue===null&&value!=="."?
+		var result = this.state.inputValue===null&&value!==operationType.point?
 			value:
 			this.state.displayValue+value;
 

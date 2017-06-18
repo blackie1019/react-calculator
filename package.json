@@ -36,6 +36,7 @@
   "dependencies": {
     "copyfiles": "^1.2.0",
     "cross-env": "^5.0.1",
+    "mathjs": "^3.13.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "rimraf": "^2.6.1"
