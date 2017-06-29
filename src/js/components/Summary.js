@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import accounting from '../third-party/accounting.min.js'
 
 function convertDisplay(input){
-	var index = input.indexOf(".");
-	var diff = input.length-index-1;
-	
+	let index = input.indexOf(".");
+	let diff = input.length-index-1;
+
 	if(index<=0 || (input === "0"||diff===0)){
 		return input;
 	}

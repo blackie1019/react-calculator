@@ -21,7 +21,7 @@ class Calculator extends Component {
 	}
 	
 	clean(){
-		var updateState = calculatorInitState;
+		let updateState = calculatorInitState;
 
 		if(this.state.isAllClean){
 			updateState.totalValue = 0;
@@ -36,26 +36,15 @@ class Calculator extends Component {
 
 	calculating(type){
 		
-		var updateState = this.state;
+		let updateState = this.state;
 		if(type === operationType.sum){
 			if(updateState.operationType===null){
 				return;
 			}
-			var formula = updateState.previousValue+updateState.operationType+updateState.inputValue;
-			var tempResult = math.format(math.eval(formula),{precision: 10}); 
+			let formula = updateState.previousValue+updateState.operationType+updateState.inputValue;
+			let tempResult = math.format(math.eval(formula),{precision: 10}); 
 			updateState.totalValue = tempResult;
-
-			// if(updateState.previousValue !== null){
-				// var formula = updateState.previousValue+updateState.operationType+updateState.inputValue;
-				// var tempResult = math.format(math.eval(formula),{precision: 10});
-				// updateState.totalValue = updateState.totalValue === 0 ? 
-				// 	tempResult:
-				// 	math.format(math.eval(updateState.totalValue+updateState.operationType+tempResult),{precision: 10});
-
-			// }else if(updateState.previousValue === null){
-			// 	var formula = updateState.inputValue+updateState.operationType+updateState.totalValue;
-			// 	updateState.totalValue = math.format(math.eval(formula),{precision: 10}); 
-			// }
+			
 			updateState.displayValue = updateState.totalValue.toString();
 			updateState.historyStack.push( this.inputNewHistoryItem(updateState.historyStack.length+1,this.inputStateValue({},updateState)));
 			updateState.previousValue = this.state.totalValue;
@@ -83,11 +72,11 @@ class Calculator extends Component {
 	}
 
 	historyUpdate(currentState,isUndo){
-		var updateState = currentState;
-		var popItem = isUndo ? 
+		let updateState = currentState;
+		let popItem = isUndo ? 
 			updateState.historyStack.pop():
 			updateState.removeStack.pop();
-		var newSeq = isUndo ?
+		let newSeq = isUndo ?
 			updateState.removeStack.length+1:
 			updateState.historyStack.length+1;
 
@@ -124,7 +113,7 @@ class Calculator extends Component {
 			return;
 		}
 
-		var result = (this.state.inputValue === null && value !== operationType.point)||this.state.isLastIsSum?
+		let result = (this.state.inputValue === null && value !== operationType.point)||this.state.isLastIsSum?
 			value:
 			this.state.displayValue+value;
 

@@ -1,5 +1,5 @@
 const path = require('path');
-var webpack = require('webpack');
+const webpack = require('webpack');
 const sourcePath = path.resolve(__dirname, '../src');
 const publicPath = path.resolve(__dirname, '../docs');
 
